@@ -6,10 +6,18 @@
   <script>
     (function () {
       var l = window.location;
-      var path = l.pathname + l.search + l.hash;
+      var repoName = '/kuo-anime';
+      var path = l.pathname;
+      
+      if (path.startsWith(repoName)) {
+        path = path.slice(repoName.length);
+      }
+      
+      var fullPath = path + l.search + l.hash;
+
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        '/?p=' + encodeURIComponent(path.slice(1))
+        repoName + '/?p=' + encodeURIComponent(fullPath)
       );
     })();
   </script>

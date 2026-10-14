@@ -10,13 +10,19 @@
         var params = new URLSearchParams(window.location.search);
         var p = params.get('p');
         if (p) {
-          window.history.replaceState(null, '', '/' + p);
+          var decodedPath = decodeURIComponent(p);
+          if (!decodedPath.startsWith('/')) {
+             decodedPath = '/' + decodedPath;
+          }
+          window.history.replaceState(null, '', '/kuo-anime' + decodedPath);
         }
       })();
-    </script>
+   </script>
+
     <script type="module" crossorigin src="/kuo-anime/assets/index-DQw59o2W.js"></script>
     <link rel="stylesheet" crossorigin href="/kuo-anime/assets/index-BSeWk7P9.css">
   </head>
+  
   <body>
     <div id="root"></div>
   </body>
