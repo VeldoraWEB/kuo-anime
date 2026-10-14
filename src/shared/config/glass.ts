@@ -1,0 +1,1 @@
+export const glass = 'bg-zinc-950/40 backdrop-blur-xl border border-white/5 shadow-2xl'

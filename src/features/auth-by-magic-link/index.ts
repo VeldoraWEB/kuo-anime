@@ -1,0 +1,1 @@
+export { default as MagicLinkForm } from './MagicLinkForm'

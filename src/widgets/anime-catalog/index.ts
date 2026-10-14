@@ -1,0 +1,1 @@
+export { default as AnimeCatalog } from './AnimeCatalog'
