@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/kuo-anime/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KUO Anime</title>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        if (p) {
+          window.history.replaceState(null, '', '/' + p);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/kuo-anime/assets/index-DQw59o2W.js"></script>
+    <link rel="stylesheet" crossorigin href="/kuo-anime/assets/index-BSeWk7P9.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>KUO Anime</title>
+  <script>
+    (function () {
+      var l = window.location;
+      var path = l.pathname + l.search + l.hash;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        '/?p=' + encodeURIComponent(path.slice(1))
+      );
+    })();
+  </script>
+</head>
+<body></body>
+</html>
