@@ -51,7 +51,9 @@ export default function Header() {
           </span>
         </button>
 
-        <nav aria-label="Main" className="flex flex-1 items-center justify-center gap-1 md:gap-2">
+        <nav 
+          aria-label="Main" 
+          className="flex min-w-0 flex-1 items-center justify-center gap-1 md:gap-2">
           {navLink('/', 'Home', Home)}
           {navLink('/my-list', 'My List', Bookmark)}
           <RandomButton />

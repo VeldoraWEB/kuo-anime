@@ -6,6 +6,7 @@ import { PlayerSection } from "@/widgets/video-player";
 import { glass } from "@/shared/config/glass";
 import { RateAnime } from "@/features/rate-anime";
 import { ToggleMyListButton } from "@/features/toggle-my-list";
+import { RelatedAnimeSection } from '@/features/related-anime'
 
 export default function WatchPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -131,7 +132,7 @@ export default function WatchPage() {
 
       
 
-      <PlayerSection anime={anime} />
+      <PlayerSection key={anime.slug} anime={anime} />
 
       <p className="rounded-xl border border-amber-500/20 bg-amber-500/5 px-4 py-2.5 text-xs text-amber-300">
          Если видео не загружается — попробуйте{' '}
@@ -145,6 +146,8 @@ export default function WatchPage() {
           </a>{' '}
          или включите VPN.
       </p>
+
+      <RelatedAnimeSection anime={anime} />
 
     </div>
   );

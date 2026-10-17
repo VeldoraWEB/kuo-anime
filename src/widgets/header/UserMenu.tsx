@@ -21,7 +21,7 @@ export default function UserMenu() {
       <button
         type="button"
         onClick={() => navigate('/login')}
-        className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-violet-500/50 hover:bg-violet-500/10 hover:shadow-[0_0_24px_-8px_rgba(139,92,246,0.9)] active:scale-95"
+        className="shrink-0 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-violet-500/50 hover:bg-violet-500/10 hover:shadow-[0_0_24px_-8px_rgba(139,92,246,0.9)] active:scale-95"
       >
         Login
       </button>

@@ -8,7 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prod": "npm run build && vite preview"
+    "prod": "npm run build && vite preview",
+    "deploy": "npm run build && gh-pages -d dist",
+    "posters": "node png-convert/convert-posters.mjs",
+    "avatars": "node png-convert/convert-avatars.mjs"
+
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.2",
@@ -33,6 +37,7 @@
     "eslint": "^10.10.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
+    "gh-pages": "^6.3.0",
     "globals": "^17.12.0",
     "postcss": "^8.5.28",
     "sharp": "^0.35.5",

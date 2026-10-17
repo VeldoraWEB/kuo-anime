@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Plus, Check } from 'lucide-react'
 import { cn } from '@/shared/lib'
@@ -15,14 +16,20 @@ export default function ToggleMyListButton({ animeId, variant = 'card' }: Props)
   const user = useAuthStore((s) => s.user)
   const inList = useIsInMyList(animeId)
   const toggle = useToggleMyList()
+  const cooldownRef = useRef(false)
 
   const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault()
     e.stopPropagation()
     if (!user) {
       navigate('/login')
       return
     }
+    
+    if (cooldownRef.current) return
+    cooldownRef.current = true
     toggle.mutate({ animeId, inList })
+    setTimeout(() => { cooldownRef.current = false }, 250)
   }
 
   const isCard = variant === 'card'
@@ -31,10 +38,11 @@ export default function ToggleMyListButton({ animeId, variant = 'card' }: Props)
     <button
       type="button"
       onClick={handleClick}
+      disabled={toggle.isPending}
       className={cn(
         isCard
-          ? 'pointer-events-auto flex translate-y-2 items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-semibold text-zinc-950 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100'
-          : 'ml-auto flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300 active:scale-[0.98]',
+          ? 'pointer-events-auto flex translate-y-2 items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-semibold text-zinc-950 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100 disabled:opacity-60'
+          : 'ml-auto flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300 active:scale-[0.98] disabled:opacity-60',
         inList
           ? isCard
             ? 'bg-cyan-400 hover:bg-cyan-300'

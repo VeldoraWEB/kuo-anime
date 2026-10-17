@@ -1,0 +1,1 @@
+export { default as RelatedAnimeSection } from './ui/RelatedAnimeSection'

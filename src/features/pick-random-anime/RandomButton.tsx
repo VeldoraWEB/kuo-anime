@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Dices, Loader2 } from 'lucide-react'
 import { supabase } from '@/shared/api/supabase'
 
-const COOLDOWN_MS = 4000
+const COOLDOWN_MS = 3000
 
 export default function RandomButton() {
   const navigate = useNavigate()
