@@ -2,24 +2,18 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>KUO Anime</title>
+  <title>Redirecting...</title>
   <script>
-    (function () {
-      var l = window.location;
-      var repoName = '/kuo-anime';
-      var path = l.pathname;
-      
-      if (path.startsWith(repoName)) {
-        path = path.slice(repoName.length);
-      }
-      
-      var fullPath = path + l.search + l.hash;
+    var pathSegmentsToKeep = 1;
 
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        repoName + '/?p=' + encodeURIComponent(fullPath)
-      );
-    })();
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
   </script>
 </head>
 <body></body>
