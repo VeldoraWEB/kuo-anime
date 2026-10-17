@@ -54,6 +54,6 @@ src/
 ├── app/       # Инициализация приложения (провайдеры, роутинг)
 ├── pages/     # Страницы (Home, Watch, Profile..)
 ├── widgets/   # Крупные самостоятельные блоки (Header, Video-Player..)
-├── features/  # Разнообразные фичи (Search, ToggleMyList, RateAnime)
+├── features/  # Разнообразные фичи (Search, ToggleMyList, RateAnime..)
 ├── entities/  # Бизнес-сущности (Anime, User) и их UI-компоненты
 └── shared/    # Переиспользуемый код (UI-кит, утилиты, API-клиенты, конфиги)
