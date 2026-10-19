@@ -49,7 +49,10 @@ export default function ProfileInfoForm({
           <input
             id="display-name"
             value={displayName}
-            onChange={(e) => onDisplayNameChange(e.target.value)}
+            onChange={(e) => {
+              const cleanValue = e.target.value.replace(/[^a-zA-Zа-яА-Я0-9]/g, '');
+              onDisplayNameChange(cleanValue); }}
+            maxLength={16}
             className={inputClass}
           />
         </div>
