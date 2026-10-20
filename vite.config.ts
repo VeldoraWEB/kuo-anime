@@ -12,4 +12,18 @@ export default defineConfig(({ mode }) => ({
     },
   },
   server: { open: true },
+  build: {
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [
+            { name: 'react-vendor', test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/ },
+            { name: 'supabase', test: /[\\/]node_modules[\\/]@supabase[\\/]/ },
+            { name: 'hls', test: /[\\/]node_modules[\\/]hls\.js[\\/]/ },
+            { name: 'query', test: /[\\/]node_modules[\\/]@tanstack[\\/]/ },
+          ],
+        },
+      },
+    },
+  },
 }))

@@ -1,1 +1,21 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+.backdrop-blur-md,
+.backdrop-blur-xl,
+.backdrop-blur-2xl {
+  isolation: isolate;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  contain: paint;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .backdrop-blur-md,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-color: rgba(20, 12, 35, 0.92) !important; 
+  }
+}
