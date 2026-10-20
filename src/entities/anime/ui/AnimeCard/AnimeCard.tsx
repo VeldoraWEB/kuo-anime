@@ -18,7 +18,6 @@ export default function AnimeCard({ anime, onOpen }: Props) {
   const cooldownRef = useRef(false)
 
   const handleToggleList = (e: React.MouseEvent) => {
-
     e.preventDefault()
     e.stopPropagation()
 
@@ -46,7 +45,7 @@ export default function AnimeCard({ anime, onOpen }: Props) {
       <div className="absolute inset-0 bg-zinc-950/60 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100" />
 
       {(anime.ratingCount ?? 0) > 0 && (
-        <div className="absolute left-3 top-3 flex items-center gap-1 rounded-md bg-black/50 px-1.5 py-0.5 text-xs font-semibold text-amber-300 backdrop-blur-md">
+        <div className="pointer-events-none absolute left-3 top-3 flex items-center gap-1 rounded-md bg-black/50 px-1.5 py-0.5 text-xs font-semibold text-amber-300 backdrop-blur-md">
           <Star className="size-3 fill-current" aria-hidden="true" />
           {anime.rating?.toFixed(1) ?? '0.0'}
         </div>
@@ -66,7 +65,7 @@ export default function AnimeCard({ anime, onOpen }: Props) {
         </span>
       </a>
 
-      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-3">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-2 p-3">
         <div className="flex translate-y-2 flex-wrap gap-1 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           {anime.genres.map((g) => (
             <span
@@ -80,15 +79,16 @@ export default function AnimeCard({ anime, onOpen }: Props) {
         <h3 className="line-clamp-1 text-sm font-bold text-white">{anime.title}</h3>
         <p className="text-xs text-zinc-400">
           {anime.year} &middot; {anime.episodes} eps
-        </p>
+        </p>        
+
         <button
           type="button"
           onClick={handleToggleList}
           disabled={toggle.isPending}
           className={
             inList
-              ? 'flex translate-y-2 items-center justify-center gap-1.5 rounded-lg bg-cyan-400 py-2 text-xs font-semibold text-zinc-950 opacity-0 transition-all duration-300 hover:bg-cyan-300 disabled:opacity-60 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100'
-              : 'flex translate-y-2 items-center justify-center gap-1.5 rounded-lg bg-white py-2 text-xs font-semibold text-zinc-950 opacity-0 transition-all duration-300 hover:bg-cyan-300 disabled:opacity-60 group-hover:translate-y-0 group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100'
+              ? 'pointer-events-auto flex translate-y-0 items-center justify-center gap-1.5 rounded-lg bg-cyan-400 py-2 text-xs font-semibold text-zinc-950 opacity-100 transition-all duration-300 hover:bg-cyan-300 disabled:opacity-60 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100'
+              : 'pointer-events-auto flex translate-y-0 items-center justify-center gap-1.5 rounded-lg border border-violet-500/20 bg-violet-500/10 py-2 text-xs font-semibold text-violet-100 opacity-100 backdrop-blur-md transition-all duration-300 hover:bg-violet-500/20 hover:border-violet-400/40 hover:text-white disabled:opacity-60 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100'
           }
         >
           {inList ? (
