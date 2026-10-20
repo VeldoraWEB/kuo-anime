@@ -10,19 +10,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/kuo-anime/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/kuo-anime/icon-512x512.png" />
     
-    <script>
-      (function(l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
     <script type="module" crossorigin src="/kuo-anime/assets/index-C9aKS_H0.js"></script>
     <link rel="stylesheet" crossorigin href="/kuo-anime/assets/index-0LA_OzVS.css">
   </head>
