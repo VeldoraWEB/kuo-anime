@@ -29,17 +29,25 @@ export function useToggleMyList() {
 
   return useMutation({
     mutationFn: async ({ animeId, inList }: ToggleVars) => {
-      if (inList) await removeFromMyList(animeId)
-      else await addToMyList(animeId)
+      try {
+        if (inList) await removeFromMyList(animeId)
+        else await addToMyList(animeId)
+      } catch (error) {
+        console.error('Ошибка при мутации списка:', error)
+        throw error 
+      }
     },
 
     onMutate: async ({ animeId, inList }) => {
       await queryClient.cancelQueries({ queryKey: ['my-list-ids'] })
       const previous = queryClient.getQueryData<string[]>(['my-list-ids'])
 
-      queryClient.setQueryData<string[]>(['my-list-ids'], (old = []) =>
-        inList ? old.filter((id) => id !== animeId) : [...old, animeId],
-      )
+      queryClient.setQueryData<string[]>(['my-list-ids'], (old) => {
+        const currentList = Array.isArray(old) ? old : []
+        return inList 
+          ? currentList.filter((id) => id !== animeId) 
+          : [...currentList, animeId]
+      })
 
       return { previous }
     },
