@@ -52,17 +52,19 @@ export default function ToggleMyListButton({ animeId, variant = 'card' }: Props)
             : 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-[0_10px_30px_-10px_rgba(139,92,246,0.8)] hover:from-violet-500 hover:to-cyan-500',
       )}
     >
-      {inList ? (
-        <>
-          <Check className={isCard ? 'size-3.5' : 'size-4'} aria-hidden="true" />
-          In List
-        </>
-      ) : (
-        <>
-          <Plus className={isCard ? 'size-3.5' : 'size-4'} aria-hidden="true" />
-          Add to List
-        </>
-      )}
+      <span translate="no" className="flex items-center justify-center gap-2">
+        {inList ? (
+          <>
+            <Check className={isCard ? 'size-3.5' : 'size-4'} aria-hidden="true" />
+            In List
+          </>
+        ) : (
+          <>
+            <Plus className={isCard ? 'size-3.5' : 'size-4'} aria-hidden="true" />
+            Add to List
+          </>
+        )}
+      </span>
     </button>
   )
 }

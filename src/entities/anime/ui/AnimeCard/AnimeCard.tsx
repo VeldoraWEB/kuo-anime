@@ -91,17 +91,19 @@ export default function AnimeCard({ anime, onOpen }: Props) {
               : 'pointer-events-auto flex translate-y-0 items-center justify-center gap-1.5 rounded-lg border border-violet-500/20 bg-violet-500/10 py-2 text-xs font-semibold text-violet-100 opacity-100 backdrop-blur-md transition-all duration-300 hover:bg-violet-500/20 hover:border-violet-400/40 hover:text-white disabled:opacity-60 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 focus-visible:translate-y-0 focus-visible:opacity-100'
           }
         >
-          {inList ? (
-            <>
-              <Check className="size-3.5" aria-hidden="true" />
-              In List
-            </>
-          ) : (
-            <>
-              <Plus className="size-3.5" aria-hidden="true" />
-              Add to List
-            </>
-          )}
+          <span translate="no" className="flex items-center justify-center gap-1.5">
+            {inList ? (
+              <>
+                <Check className="size-3.5" aria-hidden="true" />
+                In List
+              </>
+            ) : (
+              <>
+                <Plus className="size-3.5" aria-hidden="true" />
+                Add to List
+              </>
+            )}
+          </span>
         </button>
       </div>
     </article>
